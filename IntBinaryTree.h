@@ -45,6 +45,9 @@ public:
    void displayInOrder() const { displayInOrder(root); }
    void displayPreOrder() const { displayPreOrder(root); }
    void displayPostOrder() const { displayPostOrder(root); }
+
+   //kent defined function
+   bool modify(string, string);
 };
 
 #endif // INTBINARYTREE_H

@@ -13,7 +13,6 @@ void deleteValue(IntBinaryTree &);
 void searchValue(IntBinaryTree &);
 void modifyValue(IntBinaryTree &);
 
-
 /************************************************
  * Function: Main
  ************************************************/
@@ -45,7 +44,7 @@ int main()
             break;
 
         case (4):
-            modifyValue(myTree); 
+            modifyValue(myTree);
             break;
 
         default: // shouldn't be possible due to range handling in printMenu()
@@ -72,7 +71,7 @@ void readIn(IntBinaryTree &myTree)
 int printMenu()
 {
     int choice = 0;
-    cout << "BST MENU -----\n1) Add a Node\n2) Delete a Node\n3) Search for a Node\n4) Modify a Node\n5) Quit Program\nYour Choice: -----> ";
+    cout << "\nBST MENU -----\n1) Add a Node\n2) Delete a Node\n3) Search for a Node\n4) Modify a Node\n5) Quit Program\nYour Choice: -----> ";
     cin >> choice;
 
     // validation loop
@@ -88,20 +87,57 @@ int printMenu()
 
 void addValue(IntBinaryTree &myTree)
 {
+    string buf;
+    cin.ignore(); // clear cache
+    cout << "String value to add to the BST: ";
+    getline(cin, buf);
 
+    // add node to BST
+    myTree.insertNode(buf);
+
+    cout << "Added! Verify if needed with Node Search.\n";
 }
 
 void deleteValue(IntBinaryTree &myTree)
 {
+    string buf;
+    cin.ignore(); // clear cache
+    cout << "String value to remove from BST: ";
+    getline(cin, buf);
 
+    if (myTree.searchNode(buf)) // if node with value == buf exists:
+    {
+        myTree.remove(buf);
+        cout << "Removed! Verify if needed with Node Search.\n";
+    }
+    else
+        cout << "Unable to find Node with that value!\n";
 }
 
 void searchValue(IntBinaryTree &myTree)
 {
+    string buf;
+    cin.ignore(); // clear cache
+    cout << "String value to find in BST: ";
+    getline(cin, buf);
 
+    if (myTree.searchNode(buf)) // found
+        cout << "Found! Node with this value exists in BST!\n";
+    else // not found
+        cout << "Unable to find Node with that value!\n";
 }
 
 void modifyValue(IntBinaryTree &myTree)
 {
+    string buf, buf2;
+    cin.ignore(); // clear cache
+    cout << "String value to alter from BST: ";
+    getline(cin, buf);
+    cout << "New value to change to: ";
+    getline(cin, buf2);
 
+    if (myTree.modify(buf, buf2))
+        cout << "Modified! Verify if needed with Node Search.\n"; // success
+    else
+        cout << "Unable to find Node with that value!\n"; // could not find
 }

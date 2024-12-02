@@ -142,3 +142,23 @@ void IntBinaryTree::displayPostOrder(TreeNode *nodePtr) const {
       cout << nodePtr->value << endl;
    }
 }
+
+//function I defined to alter the value that the Node stores
+bool IntBinaryTree::modify(string str, string newMessage)
+{
+   //searches for value
+   TreeNode *nodePtr = root;
+
+   while (nodePtr)    {
+      if (nodePtr->value == str)
+      {
+         nodePtr->value = newMessage; //modify value
+         return(true); //found, altered successfully
+      }
+      else if (str < nodePtr->value)
+         nodePtr = nodePtr->left;
+      else
+         nodePtr = nodePtr->right;
+   }
+   return(false); //couldn't find
+}
