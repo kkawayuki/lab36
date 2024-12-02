@@ -7,6 +7,7 @@ using namespace std;
 
 //function prototype
 void readIn(IntBinaryTree &);
+int printMenu();
 
 /************************************************
  * Function: Main
@@ -19,13 +20,38 @@ int main()
     // add/delete/search/modify records
 
     IntBinaryTree myTree = IntBinaryTree(); //initalize root to locaiton of binary tree
-    //need pointer to root it owuld seem? 
 
+    //logic to read in values to BST
     readIn(myTree); 
     
-    cout << "test complete";
+    int choice;
 
-    myTree.displayInOrder(); //doesn't require parameter, uses private root variable
+    while(choice != 5);
+    {
+        choice = printMenu();
+        switch(choice)
+        {
+            case(1):
+                break;
+
+            case(2):
+                break;
+
+            case(3):
+                break;
+            
+            case(4):
+                break;
+
+            default: //shouldn't be possible due to error handling in printMenu()
+                break;
+        }
+    }
+    
+    
+    //myTree.displayInOrder(); //doesn't require parameter, uses private root variable
+
+    cout << myTree.searchNode("a");
 
     return 0;
 }
@@ -33,11 +59,24 @@ int main()
 
 void readIn(IntBinaryTree &myTree)
 {
-    string file = "test.txt", buf;
+    string file = "codes.txt", buf;
     ifstream fin(file); 
 
     while(getline(fin,buf)) //for each line
     {
         myTree.insertNode(buf); //insert into binary tree
     }
+}
+
+int printMenu()
+{
+    int choice = 0;
+
+    while(choice < 0 || choice > 5)
+    {
+        cout << "BST MENU -----\n1) Add a Node\n2)Delete a Node\n3)Search for a Node\n4)Modify a Node\nYour Choice: ----->"; 
+        cin >> choice; 
+    }
+    cout << '\n';
+    return(choice);
 }
