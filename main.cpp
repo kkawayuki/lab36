@@ -19,13 +19,13 @@ void modifyValue(IntBinaryTree &);
 int main()
 {
     // build binary tree
-    IntBinaryTree myTree = IntBinaryTree();
+    IntBinaryTree myTree = IntBinaryTree(); // not sure if I have to do like this but it works
 
     // logic to read in values to BST
     readIn(myTree);
 
+    // loop control variable
     int choice = 0;
-
     while (choice != 5)
     {
         choice = printMenu();
@@ -52,11 +52,17 @@ int main()
         }
     }
 
-    // myTree.displayInOrder(); //doesn't require parameter, uses private root variable
-
     return 0;
 }
 
+/************************************************
+ * Function: Reads in all values from specified
+ * text file into BST
+ *
+ * Parameters:
+ * &myTree, BST, passed by reference in order to
+ * insert node values to it
+ ************************************************/
 void readIn(IntBinaryTree &myTree)
 {
     string file = "codes.txt", buf;
@@ -68,6 +74,12 @@ void readIn(IntBinaryTree &myTree)
     }
 }
 
+/************************************************
+ * Function: Print driving menu, gather user response
+ *
+ * Return:
+ * choice: int value corresponding to user preference
+ ************************************************/
 int printMenu()
 {
     int choice = 0;
@@ -85,6 +97,14 @@ int printMenu()
     return (choice);
 }
 
+/************************************************
+ * Function: Add a new Node to the BST with value
+ * specified by user
+ *
+ * Parameters:
+ * &myTree, BST, passed by reference in order to
+ * insert node values to it
+ ************************************************/
 void addValue(IntBinaryTree &myTree)
 {
     string buf;
@@ -98,6 +118,14 @@ void addValue(IntBinaryTree &myTree)
     cout << "Added! Verify if needed with Node Search.\n";
 }
 
+/************************************************
+ * Function: Remove an existing Node from the BST,
+ * verified using a search function.
+ *
+ * Parameters:
+ * &myTree, BST, passed by reference in order to
+ * delete node values to it
+ ************************************************/
 void deleteValue(IntBinaryTree &myTree)
 {
     string buf;
@@ -114,6 +142,13 @@ void deleteValue(IntBinaryTree &myTree)
         cout << "Unable to find Node with that value!\n";
 }
 
+/************************************************
+ * Function: Searches BST for specific value, lets
+ * user know of existence.
+ *
+ * Parameters:
+ * &myTree, BST to search
+ ************************************************/
 void searchValue(IntBinaryTree &myTree)
 {
     string buf;
@@ -127,6 +162,15 @@ void searchValue(IntBinaryTree &myTree)
         cout << "Unable to find Node with that value!\n";
 }
 
+/************************************************
+ * Function: Takes in user input regarding initial
+ * and final values for a Node, changes value to
+ * final if node exists.
+ *
+ * Parameters:
+ * &myTree, BST, passed by reference in order to
+ * modify node values in it
+ ************************************************/
 void modifyValue(IntBinaryTree &myTree)
 {
     string buf, buf2;
