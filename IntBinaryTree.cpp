@@ -1,6 +1,7 @@
 // Implementation file for the IntBinaryTree class
 #include <iostream>
 #include "IntBinaryTree.h"
+#include <string>
 using namespace std;
 
 // insert accepts a TreeNode pointer and a pointer to a node.
@@ -15,14 +16,14 @@ void IntBinaryTree::insert(TreeNode *&nodePtr, TreeNode *&newNode) {
       insert(nodePtr->right, newNode);    // Search the right branch
 }
 
-// insertNode creates a new node to hold num as its value,
+// insertNode creates a new node to hold str as its value,
 // and passes it to the insert function.                  
-void IntBinaryTree::insertNode(int num) {
+void IntBinaryTree::insertNode(string str) {
    TreeNode *newNode;      // Pointer to a new node.
 
-   // Create a new node and store num in it.
+   // Create a new node and store str in it.
    newNode = new TreeNode;
-   newNode->value = num;
+   newNode->value = str;
    newNode->left = newNode->right = nullptr;
    
    // Insert the node.
@@ -45,13 +46,13 @@ void IntBinaryTree::destroySubTree(TreeNode *nodePtr) {
 // searchNode determines if a value is present in  
 // the tree. If so, the function returns true.     
 // Otherwise, it returns false.                    
-bool IntBinaryTree::searchNode(int num) {
+bool IntBinaryTree::searchNode(string str) {
    TreeNode *nodePtr = root;
 
    while (nodePtr)    {
-      if (nodePtr->value == num)
+      if (nodePtr->value == str)
          return true;
-      else if (num < nodePtr->value)
+      else if (str < nodePtr->value)
          nodePtr = nodePtr->left;
       else
          nodePtr = nodePtr->right;
@@ -60,18 +61,18 @@ bool IntBinaryTree::searchNode(int num) {
 }
 
 // remove calls deleteNode to delete the      
-// node whose value member is the same as num.
-void IntBinaryTree::remove(int num) {
-   deleteNode(num, root);
+// node whose value member is the same as str.
+void IntBinaryTree::remove(string str) {
+   deleteNode(str, root);
 }
 
 // deleteNode deletes the node whose value 
-// member is the same as num.              
-void IntBinaryTree::deleteNode(int num, TreeNode *&nodePtr) {
-   if (num < nodePtr->value)
-      deleteNode(num, nodePtr->left);
-   else if (num > nodePtr->value)
-      deleteNode(num, nodePtr->right);
+// member is the same as str.              
+void IntBinaryTree::deleteNode(string str, TreeNode *&nodePtr) {
+   if (str < nodePtr->value)
+      deleteNode(str, nodePtr->left);
+   else if (str > nodePtr->value)
+      deleteNode(str, nodePtr->right);
    else
       makeDeletion(nodePtr);
 }
