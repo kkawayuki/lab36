@@ -6,7 +6,7 @@
 using namespace std;
 
 //function prototype
-void readIn(IntBinaryTree &root);
+void readIn(IntBinaryTree &);
 
 /************************************************
  * Function: Main
@@ -18,22 +18,26 @@ int main()
     // add menu-driven functionality
     // add/delete/search/modify records
 
-    IntBinaryTree root = IntBinaryTree(); //initalize root to locaiton of binary tree
+    IntBinaryTree myTree = IntBinaryTree(); //initalize root to locaiton of binary tree
+    //need pointer to root it owuld seem? 
 
-    //readIn(root); 
+    readIn(myTree); 
     
+    cout << "test complete";
+
+    myTree.displayInOrder(); //doesn't require parameter, uses private root variable
 
     return 0;
 }
 
 
-void readIn(IntBinaryTree &root)
+void readIn(IntBinaryTree &myTree)
 {
-    string file = "text.txt", buf;
+    string file = "test.txt", buf;
     ifstream fin(file); 
 
     while(getline(fin,buf)) //for each line
     {
-        root.insertNode(buf); //insert into binary tree
+        myTree.insertNode(buf); //insert into binary tree
     }
 }
